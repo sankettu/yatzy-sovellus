@@ -1,0 +1,1 @@
+4.9.2015 2 tuntia: Projektin luonti ja alkuvalmistelut
