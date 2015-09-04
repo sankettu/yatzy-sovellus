@@ -4,8 +4,7 @@ tuloskategorioihin kolmella heittoyrityksella per kierros esim. pari, kaksiparia
 **Kayttajat:** Pelaaja
 
 **Pelaajan toiminnot:**
-
-	* Pelaajien lukumaaran valitseminen
-	* Heitettavien noppien valitseminen ja heittaminen
-	* Tulostaulun seuranta
-	* Heitetyn tuloksen sijoittaminen tulostaululle
+* Pelaajien lukumaaran valitseminen
+* Heitettavien noppien valitseminen ja heittaminen
+* Tulostaulun seuranta
+* Heitetyn tuloksen sijoittaminen tulostaululle
