@@ -1,8 +1,11 @@
 package yatzy.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Nopat {
 
+    private ArrayList<Noppa> nopat;
     private Noppa noppa1;
     private Noppa noppa2;
     private Noppa noppa3;
@@ -15,6 +18,12 @@ public class Nopat {
         this.noppa3 = new Noppa();
         this.noppa4 = new Noppa();
         this.noppa5 = new Noppa();
+        this.nopat = new ArrayList<Noppa>();
+        nopat.add(noppa1);
+        nopat.add(noppa2);
+        nopat.add(noppa3);
+        nopat.add(noppa4);
+        nopat.add(noppa5);
     }
     
     public int getNoppa1() {
@@ -36,18 +45,26 @@ public class Nopat {
     public int getNoppa5() {
         return this.noppa5.getArvo();
     }
+    
+    public ArrayList<Noppa> getNopat() {
+        return this.nopat;
+    }
 
     public int arvojenSumma() {
-        return noppa1.getArvo() + noppa2.getArvo() + noppa3.getArvo() + noppa4.getArvo() + noppa5.getArvo();
+        int summa = 0;
+        for (Noppa noppa : this.nopat) {
+            summa += noppa.getArvo();
+        }
+        return summa;
     }
 
     public void heitaNopat() {
-        noppa1.heita();
-        noppa2.heita();
-        noppa3.heita();
-        noppa4.heita();
-        noppa5.heita();
+        for(Noppa noppa : this.nopat) {
+            noppa.heita();
+        }
+        Collections.sort(nopat);
     }
+    
 
     public void heitaNopat(boolean noppa1, boolean noppa2, boolean noppa3, boolean noppa4, boolean noppa5) {
         if (noppa1) {
@@ -69,5 +86,15 @@ public class Nopat {
         if (noppa5) {
             this.noppa5.heita();
         }
+        
+        Collections.sort(nopat);
+    }
+    
+    public String toString() {
+        String merkkijono = "";
+        for (Noppa noppa : this.nopat) {
+            merkkijono += noppa.getArvo() + " ";
+        }
+        return merkkijono;
     }
 }

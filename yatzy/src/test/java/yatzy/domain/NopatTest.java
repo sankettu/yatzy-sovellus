@@ -11,6 +11,8 @@ import static org.junit.Assert.*;
 
 public class NopatTest {
     
+    Nopat nopat;
+    
     public NopatTest() {
     }
     
@@ -24,10 +26,18 @@ public class NopatTest {
     
     @Before
     public void setUp() {
+        nopat = new Nopat();
     }
     
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void heitaKaikkiNopatJarjestysToimii() {
+        nopat.heitaNopat();
+        
+        assertTrue(nopat.getNopat().get(0).getArvo() <= nopat.getNopat().get(1).getArvo() && nopat.getNopat().get(3).getArvo() <= nopat.getNopat().get(4).getArvo());
     }
 
 }
