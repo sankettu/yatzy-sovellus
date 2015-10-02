@@ -2,7 +2,10 @@
 package yatzy.domain;
 
 import java.util.Random;
-
+/**
+ * Luokka Noppa-oliota varten joka vastaa pelin yksittäistä noppaa
+ * @author Santeri
+ */
 public class Noppa implements Comparable<Noppa> {
     
     private Random random;

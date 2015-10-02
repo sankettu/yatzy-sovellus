@@ -2,7 +2,11 @@ package yatzy.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+/**
+ * Luokka Nopat-oliota varten
+ * Nopat käsittelee pelin viittä noppaa yhtenä kokonaisuutena
+ * @author Santeri
+ */
 public class Nopat {
 
     private ArrayList<Noppa> nopat;
@@ -90,6 +94,7 @@ public class Nopat {
         Collections.sort(nopat);
     }
     
+    @Override
     public String toString() {
         String merkkijono = "";
         for (Noppa noppa : this.nopat) {

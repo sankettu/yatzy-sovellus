@@ -1,6 +1,10 @@
 
 package yatzy.domain;
 
+/**
+ * Luokka Pelaaja-oliolle, jolla on nimi ja tulostaulu
+ * @author Santeri
+ */
 
 public class Pelaaja {
     
