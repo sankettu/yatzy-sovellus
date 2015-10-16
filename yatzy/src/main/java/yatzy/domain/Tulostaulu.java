@@ -1,8 +1,10 @@
 package yatzy.domain;
 
 import java.util.HashMap;
+
 /**
  * Luokka tulostaulu pisteyttää pelaajan heittotulokset taulukkoon
+ *
  * @author Santeri
  */
 public class Tulostaulu {
@@ -14,9 +16,12 @@ public class Tulostaulu {
     }
 
     public int getTulos(String tulos) {
+        if (this.taulu.get(tulos) == null) {
+            return -1;
+        }
         return this.taulu.get(tulos);
     }
-    
+
     public HashMap<String, Integer> getTulostaulu() {
         return this.taulu;
     }
@@ -88,7 +93,30 @@ public class Tulostaulu {
     }
 
     public int valisumma() {
-        int valisumma = this.taulu.get("ykkoset") + this.taulu.get("kakkoset") + this.taulu.get("kolmoset") + this.taulu.get("neloset") + this.taulu.get("viitoset") + this.taulu.get("kuutoset");
+        int valisumma = 0;
+        if (this.taulu.get("ykkoset") != null) {
+            valisumma += this.taulu.get("ykkoset");
+        }
+
+        if (this.taulu.get("kakkoset") != null) {
+            valisumma += this.taulu.get("kakkoset");
+        }
+
+        if (this.taulu.get("kolmoset") != null) {
+            valisumma += this.taulu.get("kolmoset");
+        }
+
+        if (this.taulu.get("neloset") != null) {
+            valisumma += this.taulu.get("neloset");
+        }
+
+        if (this.taulu.get("viitoset") != null) {
+            valisumma += this.taulu.get("viitoset");
+        }
+
+        if (this.taulu.get("kuutoset") != null) {
+            valisumma += this.taulu.get("kuutoset");
+        }
         this.taulu.put("valisumma", valisumma);
         return valisumma;
     }
@@ -113,7 +141,7 @@ public class Tulostaulu {
     }
 
     public void kolmoisluku(Nopat nopat) {
-        for (int i = 4; i > 0; i--) {
+        for (int i = 4; i > 1; i--) {
             if (nopat.getNopat().get(i).equals(nopat.getNopat().get(i - 1)) && nopat.getNopat().get(i).equals(nopat.getNopat().get(i - 2))) {
                 this.taulu.put("kolmoisluku", nopat.getNopat().get(i).getArvo() * 3);
                 return;
@@ -124,7 +152,7 @@ public class Tulostaulu {
     }
 
     public void neloisluku(Nopat nopat) {
-        for (int i = 4; i > 0; i--) {
+        for (int i = 4; i > 2; i--) {
             if (nopat.getNopat().get(i).equals(nopat.getNopat().get(i - 1)) && nopat.getNopat().get(i).equals(nopat.getNopat().get(i - 2)) && nopat.getNopat().get(i).equals(nopat.getNopat().get(i - 3))) {
                 this.taulu.put("neloisluku", nopat.getNopat().get(i).getArvo() * 4);
                 return;
@@ -208,42 +236,43 @@ public class Tulostaulu {
 
         this.taulu.put("kaksiparia", summa);
     }
-    
-    public void summa(Nopat nopat) {
+
+    public void summa() {
         int summa = 0;
         for (String key : this.taulu.keySet()) {
-            if (key.equals("summa")) {
+            if (key.equals("summa") || key.equals("valisumma")) {
                 continue;
             }
-            
-            summa += this.taulu.get(key);
+            if (this.taulu.get(key) != null) {
+                summa += this.taulu.get(key);
+            }
         }
-        
+
         this.taulu.put("summa", summa);
     }
-    
+
     public void tayskasi(Nopat nopat) {
         int summa = 0;
         int kolmeSamaa = 0;
         int pari = 0;
-        for (int i = 4; i > 0; i--) {
+        for (int i = 4; i > 1; i--) {
             if (nopat.getNopat().get(i).equals(nopat.getNopat().get(i - 1)) && nopat.getNopat().get(i).equals(nopat.getNopat().get(i - 2))) {
                 kolmeSamaa = nopat.getNopat().get(i).getArvo();
                 break;
             }
         }
-        
+
         for (int i = 4; i > 0; i--) {
             if (nopat.getNopat().get(i).equals(nopat.getNopat().get(i - 1)) && nopat.getNopat().get(i).getArvo() != kolmeSamaa) {
                 pari = nopat.getNopat().get(i).getArvo();
                 break;
             }
         }
-        
+
         if (kolmeSamaa != 0 && pari != 0) {
             summa = (3 * kolmeSamaa) + (2 * pari);
         }
-        
+
         this.taulu.put("tayskasi", summa);
     }
 }

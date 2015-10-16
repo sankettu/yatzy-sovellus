@@ -112,7 +112,7 @@ public class TulostauluTest {
 
         assertEquals(18, tulostaulu.getTulos("kuutoset"));
     }
-    
+
     @Test
     public void kuutosetIlmanKuutosia() {
         nopat.getNopat().get(0).setArvo(1);
@@ -334,15 +334,15 @@ public class TulostauluTest {
         tulostaulu.pari(nopat);
         tulostaulu.sattuma(nopat);
         tulostaulu.kolmoisluku(nopat);
-        tulostaulu.summa(nopat);
-        tulostaulu.summa(nopat);
+        tulostaulu.summa();
+        tulostaulu.summa();
 
         assertEquals(65, tulostaulu.getTulos("summa"));
     }
 
     @Test
     public void summaIlmanTuloksia() {
-        tulostaulu.summa(nopat);
+        tulostaulu.summa();
 
         assertEquals(0, tulostaulu.getTulos("summa"));
     }
