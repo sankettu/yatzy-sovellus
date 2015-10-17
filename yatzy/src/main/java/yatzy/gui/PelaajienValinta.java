@@ -5,14 +5,10 @@
  */
 package yatzy.gui;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.JPanel;
 import yatzy.peli.Peli;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.JFrame;
 
 /**
@@ -22,8 +18,7 @@ import javax.swing.JFrame;
 public class PelaajienValinta extends JPanel {
 
     private Peli peli;
-    private JFrame frame;
-    private Kayttoliittyma kayttoliittyma;
+
 
     public PelaajienValinta(Peli peli) {
         super(new GridLayout(1, 4));

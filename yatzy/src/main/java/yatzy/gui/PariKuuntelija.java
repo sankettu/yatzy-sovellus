@@ -32,6 +32,7 @@ public class PariKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("pari") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().pari(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 

@@ -32,6 +32,7 @@ public class YatzyKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("yatzy") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().yatzy(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 

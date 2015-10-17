@@ -32,6 +32,7 @@ public class PieniSuoraKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("pienisuora") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().pieniSuora(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 

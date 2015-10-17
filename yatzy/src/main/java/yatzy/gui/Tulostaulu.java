@@ -5,9 +5,6 @@
  */
 package yatzy.gui;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.JPanel;
 import yatzy.peli.Peli;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -65,24 +62,24 @@ public class Tulostaulu extends JPanel {
     public JPanel lisaaPelaajanTulokset(Pelaaja pelaaja) {
         JPanel panel = new JPanel(new GridLayout(19, 1));
         panel.add(new JLabel(pelaaja.getNimi()));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("ykkoset"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("kakkoset"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("kolmoset"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("neloset"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("viitoset"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("kuutoset"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("valisumma"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("bonus"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("pari"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("kaksiparia"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("kolmoisluku"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("neloisluku"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("pienisuora"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("isosuora"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("tayskasi"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("sattuma"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("yatzy"))))));
-        panel.add(new JLabel(((String.valueOf(pelaaja.getTaulu().getTulos("summa"))))));
+        panel.add(new JLabel(getTulos(pelaaja, "ykkoset")));
+        panel.add(new JLabel(getTulos(pelaaja, "kakkoset")));
+        panel.add(new JLabel(getTulos(pelaaja, "kolmoset")));
+        panel.add(new JLabel(getTulos(pelaaja, "neloset")));
+        panel.add(new JLabel(getTulos(pelaaja, "viitoset")));
+        panel.add(new JLabel(getTulos(pelaaja, "kuutoset")));
+        panel.add(new JLabel(getTulos(pelaaja, "valisumma")));
+        panel.add(new JLabel(getTulos(pelaaja, "bonus")));
+        panel.add(new JLabel(getTulos(pelaaja, "pari")));
+        panel.add(new JLabel(getTulos(pelaaja, "kaksiparia")));
+        panel.add(new JLabel(getTulos(pelaaja, "kolmoisluku")));
+        panel.add(new JLabel(getTulos(pelaaja, "neloisluku")));
+        panel.add(new JLabel(getTulos(pelaaja, "pienisuora")));
+        panel.add(new JLabel(getTulos(pelaaja, "isosuora")));
+        panel.add(new JLabel(getTulos(pelaaja, "tayskasi")));
+        panel.add(new JLabel(getTulos(pelaaja, "sattuma")));
+        panel.add(new JLabel(getTulos(pelaaja, "yatzy")));
+        panel.add(new JLabel(getTulos(pelaaja, "summa")));
 
         return panel;
     }
@@ -142,9 +139,11 @@ public class Tulostaulu extends JPanel {
         return panel;
     }
 
-    @Override
-    protected void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
+    private String getTulos(Pelaaja pelaaja, String tulos) {
+        if (pelaaja.getTaulu().getTulos(tulos) == -1) {
+            return "-";
+        }
 
+        return String.valueOf(pelaaja.getTaulu().getTulos(tulos));
     }
 }

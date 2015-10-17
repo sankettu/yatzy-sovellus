@@ -32,6 +32,7 @@ public class KakkosKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("kakkoset") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().kakkoset(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 

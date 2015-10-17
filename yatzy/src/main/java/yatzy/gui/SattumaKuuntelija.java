@@ -32,6 +32,7 @@ public class SattumaKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("sattuma") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().sattuma(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 

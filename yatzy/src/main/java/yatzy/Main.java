@@ -10,14 +10,7 @@ public class Main {
         Peli peli = new Peli();
         Kayttoliittyma kayttoliittyma = new Kayttoliittyma(peli);
         SwingUtilities.invokeLater(kayttoliittyma);
-        while (peli.getPelaajienLkm() == 0) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException ex) {
-                System.out.println("Pelaajien lukumäärää ei ole vielä valittu");
-            }
-        }
-        kayttoliittyma.paivita();
         peli.peli(kayttoliittyma);
     }
+
 }

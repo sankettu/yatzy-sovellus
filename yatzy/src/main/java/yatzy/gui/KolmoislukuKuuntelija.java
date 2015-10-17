@@ -32,6 +32,7 @@ public class KolmoislukuKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("kolmoisluku") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().kolmoisluku(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 

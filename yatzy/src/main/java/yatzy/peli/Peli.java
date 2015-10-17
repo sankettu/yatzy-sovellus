@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import yatzy.gui.Kayttoliittyma;
 
 public class Peli {
-    
+
     private Nopat nopat;
     private ArrayList<Pelaaja> pelaajat;
     private int pelaajienLkm;
     private Pelaaja pelaajaVuorossa;
     private boolean tulosLaitettu;
     private int heittojaJaljella;
-    
+
     public Peli() {
         this.nopat = new Nopat();
         this.pelaajat = new ArrayList<Pelaaja>();
@@ -21,41 +21,51 @@ public class Peli {
         this.tulosLaitettu = false;
         this.heittojaJaljella = 3;
     }
-    
+
     public void luoPelaajat() {
         for (int i = 1; i <= this.pelaajienLkm; i++) {
             this.pelaajat.add(new Pelaaja("Pelaaja " + i));
         }
-        
+
         if (this.pelaajaVuorossa == null) {
             this.pelaajaVuorossa = this.pelaajat.get(0);
         }
     }
-    
+
     public ArrayList<Pelaaja> getPelaajat() {
         return this.pelaajat;
     }
-    
+
     public Pelaaja getPelaajaVuorossa() {
         return this.pelaajaVuorossa;
     }
-    
+
     public Nopat getNopat() {
         return this.nopat;
     }
-    
+
     public void tulosLaitettu() {
         this.tulosLaitettu = true;
     }
-    
+
     public int getHeittojaJaljella() {
         return this.heittojaJaljella;
     }
-    
+
     public void kerranHeitetty() {
         this.heittojaJaljella--;
     }
-    
+
+    public void pelaajienValinta() {
+        while (this.pelaajienLkm == 0) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                System.out.println("Pelaajien lukumäärää ei ole vielä valittu");
+            }
+        }
+    }
+
     public void vuoro(Pelaaja pelaaja, Kayttoliittyma kali) {
         this.pelaajaVuorossa = pelaaja;
         this.heittojaJaljella = 3;
@@ -75,7 +85,7 @@ public class Peli {
             }
         }
         kali.paivita();
-        
+
         while (heittojaJaljella == 2) {
             if (tulosLaitettu) {
                 break;
@@ -87,7 +97,7 @@ public class Peli {
             }
         }
         kali.paivita();
-        
+
         while (heittojaJaljella == 1) {
             if (tulosLaitettu) {
                 break;
@@ -99,7 +109,7 @@ public class Peli {
             }
         }
         kali.paivita();
-        
+
         while (heittojaJaljella < 1) {
             if (tulosLaitettu) {
                 break;
@@ -112,25 +122,27 @@ public class Peli {
         }
         pelaaja.getTaulu().bonus();
         pelaaja.getTaulu().summa();
-        
+
     }
-    
+
     public void kierros(Kayttoliittyma kali) {
         for (Pelaaja pelaaja : this.pelaajat) {
             vuoro(pelaaja, kali);
         }
     }
-    
+
     public void peli(Kayttoliittyma kali) {
+        this.pelaajienValinta();
+        kali.paivita();
         for (int i = 0; i < 15; i++) {
             kierros(kali);
         }
-        voittaja(kali);
+        this.voittaja(kali);
     }
-    
+
     public void voittaja(Kayttoliittyma kali) {
         Pelaaja voittaja = this.pelaajat.get(0);
-        
+
         for (Pelaaja pelaaja : this.pelaajat) {
             if (pelaaja.getTaulu().getTulos("summa") > voittaja.getTaulu().getTulos("summa")) {
                 voittaja = pelaaja;
@@ -138,11 +150,11 @@ public class Peli {
         }
         kali.pelinVoittaja(voittaja);
     }
-    
+
     public void setPelaajienLkm(int lkm) {
         this.pelaajienLkm = lkm;
     }
-    
+
     public int getPelaajienLkm() {
         return this.pelaajienLkm;
     }

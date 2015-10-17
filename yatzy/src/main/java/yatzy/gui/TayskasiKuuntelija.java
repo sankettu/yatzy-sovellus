@@ -32,6 +32,7 @@ public class TayskasiKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("tayskasi") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().tayskasi(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 

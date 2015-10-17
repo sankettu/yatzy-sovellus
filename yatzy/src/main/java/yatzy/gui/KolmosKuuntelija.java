@@ -32,6 +32,7 @@ public class KolmosKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("kolmoset") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().kolmoset(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 

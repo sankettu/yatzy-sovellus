@@ -8,13 +8,10 @@ package yatzy.gui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import yatzy.peli.Peli;
 import yatzy.domain.Pelaaja;
-import javax.swing.SwingUtilities;
-import java.util.ArrayList;
 import javax.swing.JLabel;
 
 /**
@@ -24,7 +21,6 @@ import javax.swing.JLabel;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
-    private Tulostaulu tulostaulu;
     private Peli peli;
     private PelaajienValinta valinta;
 
@@ -35,7 +31,7 @@ public class Kayttoliittyma implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("Yatzy");
-        frame.setPreferredSize(new Dimension(800, 800));
+        frame.setPreferredSize(new Dimension(700, 600));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         luoKomponentit(frame.getContentPane());
@@ -46,7 +42,7 @@ public class Kayttoliittyma implements Runnable {
 
     private void luoKomponentit(Container container) {
         this.valinta = new PelaajienValinta(this.peli);
-        container.add(this.valinta, BorderLayout.NORTH);
+        container.add(this.valinta);
     }
 
     public JFrame getFrame() {
@@ -79,8 +75,8 @@ public class Kayttoliittyma implements Runnable {
 
     public void pelinVoittaja(Pelaaja pelaaja) {
         this.frame.getContentPane().removeAll();
-        this.frame.getContentPane().add(new Tulostaulu(this.peli));
-        this.frame.getContentPane().add(new JLabel("Pelin voittaja on " + pelaaja.getNimi() + "!"), BorderLayout.SOUTH);
+        this.frame.getContentPane().add(new Tulostaulu(this.peli), BorderLayout.CENTER);
+        this.frame.getContentPane().add(new JLabel("Pelin voittaja on " + pelaaja.getNimi() + " tuloksella " + pelaaja.getTaulu().getTulos("summa") + "!"), BorderLayout.NORTH);
         this.frame.revalidate();
         this.frame.repaint();
     }

@@ -32,6 +32,7 @@ public class KuutosKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("kuutoset") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().kuutoset(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 
