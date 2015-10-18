@@ -5,3 +5,4 @@
 * 14.10.2015 6 tuntia: Graafisen kayttoliittyman ja ohjelmalogiikan kehitysta
 * 15.10.2015 7 tuntia: Graafisen kayttoliittyman ja ohjelmalogiikan jatkoa
 * 17.10.2015 2 tuntia: Kayttoliittyman viimeistelya ja koodin siistimista
+* 18.10.2015 5 tuntia: Testauksen ja dokumentoinnin viimeistelya
