@@ -9,7 +9,6 @@ import yatzy.peli.Peli;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JFrame;
 
 /**
  *
@@ -18,7 +17,6 @@ import javax.swing.JFrame;
 public class PelaajienValinta extends JPanel {
 
     private Peli peli;
-
 
     public PelaajienValinta(Peli peli) {
         super(new GridLayout(1, 4));

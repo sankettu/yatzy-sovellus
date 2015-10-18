@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 
 /**
- *
+ * Noppataulu näyttää pelaajille noppien tulokset ja luo napit noppien lukitsemiseen ja heittämiseen
  * @author Santeri
  */
 public class Noppataulu extends JPanel {
@@ -32,10 +32,10 @@ public class Noppataulu extends JPanel {
 
     private void lisaaKuvat() {
         for (int i = 1; i < 7; i++) {
-            this.kuvat[i] = (new ImageIcon("resources/" + i + ".png"));
+            this.kuvat[i] = new ImageIcon(("resources/" + i + ".png"));
         }
     }
-    
+
     private JLabel nopanTulos(int arvo) {
         if (arvo == -1) {
             return new JLabel("");
@@ -49,8 +49,8 @@ public class Noppataulu extends JPanel {
         add(noppienHeittoNapit());
         add(pelaajaVuorossa());
     }
-    
-    public JPanel noppienTulokset() {
+
+    private JPanel noppienTulokset() {
         JPanel panel = new JPanel(new GridLayout(1, 7));
         JLabel kentta1 = new JLabel("Nopat");
         panel.add(kentta1);
@@ -70,7 +70,7 @@ public class Noppataulu extends JPanel {
         return panel;
     }
 
-    public JPanel noppienHeittoNapit() {
+    private JPanel noppienHeittoNapit() {
         JPanel panel = new JPanel(new GridLayout(1, 7));
         JLabel kentta1 = new JLabel("Lukitse");
         panel.add(kentta1);
@@ -95,13 +95,13 @@ public class Noppataulu extends JPanel {
 
         return panel;
     }
-    
-    public JPanel pelaajaVuorossa() {
+
+    private JPanel pelaajaVuorossa() {
         JPanel panel = new JPanel(new GridLayout(1, 3));
         panel.add(new JLabel("Vuorossa:"));
         panel.add(new JLabel(this.peli.getPelaajaVuorossa().getNimi()));
         panel.add(new JLabel(""));
-        
+
         return panel;
     }
 

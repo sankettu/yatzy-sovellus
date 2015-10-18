@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import yatzy.domain.Pelaaja;
 
 /**
- *
+ * Luokka luo taulukon pelaajien tuloksista ja tulosten sijoitusnapit
  * @author Santeri
  */
 public class Tulostaulu extends JPanel {
@@ -59,7 +59,7 @@ public class Tulostaulu extends JPanel {
         add(lisaaTuloksenSijoitusNapit());
     }
 
-    public JPanel lisaaPelaajanTulokset(Pelaaja pelaaja) {
+    private JPanel lisaaPelaajanTulokset(Pelaaja pelaaja) {
         JPanel panel = new JPanel(new GridLayout(19, 1));
         panel.add(new JLabel(pelaaja.getNimi()));
         panel.add(new JLabel(getTulos(pelaaja, "ykkoset")));
@@ -84,7 +84,7 @@ public class Tulostaulu extends JPanel {
         return panel;
     }
 
-    public JPanel lisaaTuloksenSijoitusNapit() {
+    private JPanel lisaaTuloksenSijoitusNapit() {
         JPanel panel = new JPanel(new GridLayout(19, 1));
         panel.add(new JLabel("Sijoita tulos:"));
         JButton nappi1 = new JButton("Ykköset");

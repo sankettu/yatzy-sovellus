@@ -5,11 +5,9 @@
  */
 package yatzy.gui;
 
-import javax.swing.JFrame;
 import yatzy.peli.Peli;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import yatzy.domain.Tulostaulu;
 import yatzy.domain.Pelaaja;
 
 /**

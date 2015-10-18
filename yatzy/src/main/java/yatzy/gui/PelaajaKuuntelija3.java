@@ -7,9 +7,6 @@ package yatzy.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.Set;
-import javax.swing.JFrame;
 import yatzy.peli.Peli;
 
 /**
@@ -19,7 +16,6 @@ import yatzy.peli.Peli;
 public class PelaajaKuuntelija3 implements ActionListener {
 
     private Peli peli;
-    private Kayttoliittyma kayttoliittyma;
 
     public PelaajaKuuntelija3(Peli peli) {
         this.peli = peli;

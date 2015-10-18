@@ -36,6 +36,11 @@ public class TulostauluTest {
     }
 
     @Test
+    public void getTulosNullilla() {
+        assertEquals(-1, tulostaulu.getTulos("ykkoset"));
+    }
+
+    @Test
     public void ykkosetToimii() {
         nopat.getNopat().get(0).setArvo(1);
         nopat.getNopat().get(1).setArvo(1);
@@ -436,6 +441,16 @@ public class TulostauluTest {
 
         tulostaulu.bonus();
 
+        assertEquals(0, tulostaulu.getTulos("bonus"));
+    }
+    
+    @Test
+    public void bonusAllerajan2() {
+        HashMap<String, Integer> taulu = tulostaulu.getTulostaulu();
+        taulu.put("kuutoset", 62);
+        
+        tulostaulu.bonus();
+        
         assertEquals(0, tulostaulu.getTulos("bonus"));
     }
 }

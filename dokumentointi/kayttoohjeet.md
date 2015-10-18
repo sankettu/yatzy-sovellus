@@ -1,0 +1,1 @@
+Peli toimii yksinkertaisesti, valitse pelaajien maara ja pelaajat voivat vuorollaan heittaa noppia, lukita haluamansa ja sijoittaa ne tulostauluun. Peli toimii yatzyn saantojen mukaisesti.

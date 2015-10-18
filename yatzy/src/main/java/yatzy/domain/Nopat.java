@@ -62,6 +62,26 @@ public class Nopat {
         return this.noppa5.getArvo();
     }
 
+    public boolean getLukitus1() {
+        return this.lukitus1;
+    }
+
+    public boolean getLukitus2() {
+        return this.lukitus2;
+    }
+
+    public boolean getLukitus3() {
+        return this.lukitus3;
+    }
+
+    public boolean getLukitus4() {
+        return this.lukitus4;
+    }
+
+    public boolean getLukitus5() {
+        return this.lukitus5;
+    }
+
     public void vaihdaLukitus1() {
         if (this.lukitus1 == false) {
             this.lukitus1 = true;
@@ -113,7 +133,10 @@ public class Nopat {
     public ArrayList<Noppa> getNopat() {
         return this.nopat;
     }
-
+    /**
+     * laskee noppien arvojen summan
+     * @return palauttaa saadun tuloksen
+     */
     public int arvojenSumma() {
         int summa = 0;
         for (Noppa noppa : this.nopat) {
@@ -121,14 +144,18 @@ public class Nopat {
         }
         return summa;
     }
-
+    /**
+     * Metodi heittää kaikki nopat
+     */
     public void heitaKaikkiNopat() {
         for (Noppa noppa : this.nopat) {
             noppa.heita();
         }
         Collections.sort(this.nopat);
     }
-
+    /**
+     * Metodi heittää lukitsemattomat nopat
+     */
     public void heitaNopat() {
         if (!this.lukitus1) {
             this.noppa1.heita();

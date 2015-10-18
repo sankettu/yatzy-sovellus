@@ -16,7 +16,9 @@ public class Noppa implements Comparable<Noppa> {
         this.random = new Random();
         this.arvo = -1;
     }
-
+    /**
+     * Metodi arpoo nopalle satunnaisen kokonaisluvun luvun väliltä 1-6
+     */
     public void heita() {
         this.arvo = this.random.nextInt(6) + 1;
     }

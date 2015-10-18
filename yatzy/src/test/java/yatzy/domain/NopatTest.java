@@ -49,4 +49,49 @@ public class NopatTest {
         assertEquals(21, nopat.arvojenSumma());
     }
 
+    @Test
+    public void lukitus1Toimii() {
+        nopat.vaihdaLukitus1();
+        assertTrue(nopat.getLukitus1());
+    }
+
+    @Test
+    public void lukitus2Toimii() {
+        nopat.vaihdaLukitus2();
+        nopat.vaihdaLukitus2();
+        nopat.vaihdaLukitus2();
+        assertTrue(nopat.getLukitus2());
+    }
+
+    @Test
+    public void lukitus3Toimii() {
+        nopat.vaihdaLukitus3();
+        nopat.vaihdaLukitus3();
+        assertTrue(!nopat.getLukitus3());
+    }
+
+    @Test
+    public void lukitus4Toimii() {
+        nopat.vaihdaLukitus4();
+        assertTrue(nopat.getLukitus4());
+    }
+
+    @Test
+    public void lukitus5Toimii() {
+        nopat.vaihdaLukitus5();
+        nopat.vaihdaLukitus5();
+        nopat.vaihdaLukitus5();
+        assertTrue(nopat.getLukitus5());
+    }
+
+    @Test
+    public void poistaLukituksetToimii() {
+        nopat.vaihdaLukitus1();
+        nopat.vaihdaLukitus3();
+        nopat.vaihdaLukitus5();
+        nopat.poistaLukitukset();
+
+        assertTrue(!(nopat.getLukitus1() && nopat.getLukitus2() && nopat.getLukitus3() && nopat.getLukitus4() && nopat.getLukitus5()));
+    }
+
 }

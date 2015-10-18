@@ -15,14 +15,13 @@ import yatzy.domain.Pelaaja;
 import javax.swing.JLabel;
 
 /**
- *
+ * Pelin graafinen käyttöliittymä näyttää pelaajille pelin kulun
  * @author Santeri
  */
-public class Kayttoliittyma implements Runnable {
+public class Kayttoliittyma implements Runnable, Paivitettava {
 
     private JFrame frame;
     private Peli peli;
-    private PelaajienValinta valinta;
 
     public Kayttoliittyma(Peli peli) {
         this.peli = peli;
@@ -41,30 +40,18 @@ public class Kayttoliittyma implements Runnable {
     }
 
     private void luoKomponentit(Container container) {
-        this.valinta = new PelaajienValinta(this.peli);
-        container.add(this.valinta);
+        container.add(new PelaajienValinta(this.peli));
     }
 
     public JFrame getFrame() {
         return frame;
     }
 
-    public PelaajienValinta getValinta() {
-        return this.valinta;
-    }
-
     public Peli getPeli() {
         return this.peli;
     }
 
-    public void lopetaPelaajienValinta() {
-        this.frame.getContentPane().remove(valinta);
-        this.frame.getContentPane().add(new Tulostaulu(this.peli));
-        paivita();
-        this.frame.revalidate();
-        this.frame.repaint();
-    }
-
+    @Override
     public void paivita() {
         this.frame.getContentPane().removeAll();
         this.frame.getContentPane().add(new Tulostaulu(this.peli));
@@ -76,7 +63,7 @@ public class Kayttoliittyma implements Runnable {
     public void pelinVoittaja(Pelaaja pelaaja) {
         this.frame.getContentPane().removeAll();
         this.frame.getContentPane().add(new Tulostaulu(this.peli), BorderLayout.CENTER);
-        this.frame.getContentPane().add(new JLabel("Pelin voittaja on " + pelaaja.getNimi() + " tuloksella " + pelaaja.getTaulu().getTulos("summa") + "!"), BorderLayout.NORTH);
+        this.frame.getContentPane().add(new JLabel("Voittaja on " + pelaaja.getNimi() + " tuloksella " + pelaaja.getTaulu().getTulos("summa") + "!"), BorderLayout.NORTH);
         this.frame.revalidate();
         this.frame.repaint();
     }

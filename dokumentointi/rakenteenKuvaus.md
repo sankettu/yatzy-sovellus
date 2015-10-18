@@ -1,0 +1,2 @@
+Peli olio hallinnoi pelin kulkua ja paivittaa kayttoliittymaa. Kayttoliittyma on vuorovaikutuksessa pelin kanssa. Kun peli luodaan, se luo myos nopat olion, joka sisaltaa 5 noppaa.
+Pelin kaynnistyessa, peli olio luo pelaajat ja jokainen pelaaja olio sisaltaa pelaajan oman tulostaulun.

@@ -7,9 +7,6 @@ package yatzy.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashSet;
-import java.util.Set;
-import javax.swing.JFrame;
 import yatzy.peli.Peli;
 
 /**

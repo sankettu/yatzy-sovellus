@@ -5,11 +5,9 @@
  */
 package yatzy.gui;
 
-import javax.swing.JFrame;
 import yatzy.peli.Peli;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import yatzy.domain.Tulostaulu;
 import yatzy.domain.Pelaaja;
 
 /**
@@ -32,6 +30,7 @@ public class ViitosKuuntelija implements ActionListener {
         if (this.pelaaja.getTaulu().getTulos("viitoset") == -1 && this.peli.getHeittojaJaljella() != 3) {
             this.pelaaja.getTaulu().viitoset(this.peli.getNopat());
             this.peli.tulosLaitettu();
+            this.peli.getNopat().poistaLukitukset();
         }
     }
 
