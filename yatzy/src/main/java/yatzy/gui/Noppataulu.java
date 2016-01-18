@@ -7,6 +7,7 @@ package yatzy.gui;
 
 import yatzy.peli.Peli;
 import java.awt.GridLayout;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -14,7 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 
 /**
- * Noppataulu näyttää pelaajille noppien tulokset ja luo napit noppien lukitsemiseen ja heittämiseen
+ * Noppataulu näyttää pelaajille noppien tulokset ja luo napit noppien
+ * lukitsemiseen ja heittämiseen
+ *
  * @author Santeri
  */
 public class Noppataulu extends JPanel {
@@ -32,7 +35,12 @@ public class Noppataulu extends JPanel {
 
     private void lisaaKuvat() {
         for (int i = 1; i < 7; i++) {
-            this.kuvat[i] = new ImageIcon(("resources/" + i + ".png"));
+            try {
+                ImageIcon image = new ImageIcon((ImageIO.read(getClass().getResourceAsStream(i + ".png"))));
+                this.kuvat[i] = image;
+            } catch (Exception e) {
+                System.out.println("File not found!");
+            }
         }
     }
 
